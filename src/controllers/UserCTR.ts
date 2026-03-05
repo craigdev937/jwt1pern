@@ -183,6 +183,30 @@ class UserClass {
             return next(error);
         }
     };
+
+    Delete: express.Handler = async (req, res, next) => {
+        try {
+            const { user_id } = req.params;
+            const QRY = "DELETE FROM users WHERE user_id=$1";
+            const delUser = await dBase.query<RType>(QRY, [user_id]);
+            return res
+                .status(res.statusCode)
+                .json({
+                    success: true,
+                    message: "The user was Deleted!",
+                    data: delUser
+                });
+        } catch (error) {
+            res
+                .status(res.statusCode)
+                .json({                    success: false,
+                    message: "Error Deleting the User!",
+                    error: error instanceof Error ?
+                        error.message : "Unknown Error!"
+                });
+            return next(error);
+        }
+    };
 };
 
 export const USER: UserClass = new UserClass();

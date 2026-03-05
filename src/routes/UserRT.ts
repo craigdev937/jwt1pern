@@ -9,6 +9,8 @@ export const userRt: express.Router = express.Router();
     userRt.get("/user", USER.FetchAll);
     userRt.get("/user/:user_id", USER.GetOne);
     userRt.put("/user/:user_id", USER.Update);
+    userRt.delete("/user/:user_id", USER.Delete);
+
 
 
     
