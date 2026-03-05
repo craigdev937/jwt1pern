@@ -105,6 +105,84 @@ class UserClass {
             return next(error);
         }
     };
+
+    Logout: express.Handler = async (req, res, next) => {
+        try {
+            res.clearCookie("token", {
+                httpOnly: true,
+                secure: true,
+                sameSite: "strict"
+            });
+            return res
+                .status(res.statusCode)
+                .json({
+                    success: true,
+                    message: "User has Logged Out!"
+                });
+        } catch (error) {
+            res
+                .status(res.statusCode)
+                .json({
+                    success: false,
+                    message: "Error Logging Out the User!",
+                    error: error instanceof Error ?
+                        error.message : "Unknown Error!"
+                });
+            return next(error);
+        }
+    };
+
+    GetOne: express.Handler = async (req, res, next) => {
+        try {
+            const { user_id } = req.params;
+            const QRY = `SELECT * FROM users WHERE user_id = $1`;
+            const user = await dBase.query<RType>(QRY, [user_id]);
+            return res
+                .status(res.statusCode)
+                .json(user.rows[0]);
+        } catch (error) {
+            res
+                .status(res.statusCode)
+                .json({
+                    success: false,
+                    message: "Error getting One User!",
+                    error: error instanceof Error ?
+                        error.message : "Unknown Error!"
+                });
+            return next(error);
+        }
+    };
+
+    Update: express.Handler = async (req, res, next) => {
+        try {
+            const U = RSchema.parse(req.body);
+            const { user_id } = req.params;
+            const QRY = `UPDATE users 
+            SET first=$1, last=$2, email=$3, password=$4, 
+            updated_at=CURRENT_TIMESTAMP 
+            WHERE user_id=$5 RETURNING *`;
+            const values = [U.first, U.last, U.email, 
+                U.password, user_id];
+            const user = await dBase.query<RType>(QRY, values);
+            return res
+                .status(res.statusCode)
+                .json({
+                    success: true,
+                    message: "The User was Updated!",
+                    data: user.rows[0]
+                });
+        } catch (error) {
+            res
+                .status(res.statusCode)
+                .json({
+                    success: false,
+                    message: "Error Updating the User!",
+                    error: error instanceof Error ?
+                        error.message : "Unknown Error!"
+                });
+            return next(error);
+        }
+    };
 };
 
 export const USER: UserClass = new UserClass();
