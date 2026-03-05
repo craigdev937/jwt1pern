@@ -1,0 +1,51 @@
+{
+  "name": "jwt1pern",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "type": "commonjs",
+  "engines": {
+    "node": "24.x",
+    "npm": "11.x"
+  },
+  "scripts": {
+    "dev": "nodemon --exec ts-node src/index.ts",
+    "pro": "tsc && node dist/index.js",
+    "start": "node dist/index.js"
+  },
+  "keywords": [
+    "Node",
+    "Express",
+    "PostgreSQL",
+    "TypeScript"
+  ],
+  "author": "Craig Johnson",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "morgan": "^1.10.1",
+    "pg": "^8.19.0",
+    "serve-favicon": "^2.5.1",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/cookie-parser": "^1.4.10",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^25.3.3",
+    "@types/pg": "^8.18.0",
+    "@types/serve-favicon": "^2.5.7",
+    "nodemon": "^3.1.14",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
+
+
