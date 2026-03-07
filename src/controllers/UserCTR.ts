@@ -207,6 +207,31 @@ class UserClass {
             return next(error);
         }
     };
+
+    // Profile: express.Handler = async (req, res, next) => {
+    //     try {
+    //         const { user_id } = req.params;
+    //         const QRY = `SELECT * FROM users WHERE user_id = $1`;
+    //         const user = await dBase.query<RType>(QRY, [user_id]);
+    //         return res
+    //             .status(res.statusCode)
+    //             .json({
+    //                 success: true,
+    //                 message: "User Profile",
+    //                 data: user.rows[0]
+    //             });
+    //     } catch (error) {
+    //         res
+    //             .status(res.statusCode)
+    //             .json({
+    //                 success: false,
+    //                 message: "Error User Profile!",
+    //                 error: error instanceof Error ?
+    //                     error.message : "Unknown Error!"
+    //             });
+    //         return next(error);
+    //     }
+    // };
 };
 
 export const USER: UserClass = new UserClass();
