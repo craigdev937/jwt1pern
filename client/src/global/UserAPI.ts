@@ -1,6 +1,6 @@
 import { createApi, 
     fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { IUser } from "../models/Interfaces";
+import { IData } from "../models/Interfaces";
 const URL = "http://localhost:9000/api/user";
 
 export const UserAPI = createApi({
@@ -8,7 +8,7 @@ export const UserAPI = createApi({
     tagTypes: ["Users"],
     baseQuery: fetchBaseQuery({ baseUrl: `${URL}` }),
     endpoints: (builder) => ({
-        allUsers: builder.query<IUser, void>({
+        allUsers: builder.query<IData, void>({
             query: () => ({
                 url: "/",
                 method: "GET"

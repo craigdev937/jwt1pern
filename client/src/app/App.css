@@ -19,7 +19,11 @@ body {
     background: var(--grey);
 }
 
-
+.layout {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-height: 80vh;
+}
 
 
 

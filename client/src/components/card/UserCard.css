@@ -1,0 +1,13 @@
+.user__card {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    transition: transform .2s;
+}
+
+.user__card:hover {
+    transform: translateY(-3px);
+}
