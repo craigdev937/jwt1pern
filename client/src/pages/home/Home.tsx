@@ -6,7 +6,7 @@ import { UserCard } from "../../components/card/UserCard";
 
 export const Home = () => {
     const { error, isLoading, 
-        data } = UserAPI.useAllUsersQuery();
+        data } = UserAPI.useAllQuery();
     const US = data?.data;
     console.log(US);
 
@@ -30,7 +30,7 @@ export const Home = () => {
                     <section className="users__grid">
                         {US?.map((user) => (
                             <UserCard 
-                                key={user.user_id} 
+                                key={user.id} 
                                 user={user} 
                             />
                         ))}

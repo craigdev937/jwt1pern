@@ -3,7 +3,7 @@ export interface IData {
     message: string,
     count: number,
     data: [{
-        user_id: number,
+        id: number,
         first: string,
         last: string,
         email: string,
@@ -14,13 +14,19 @@ export interface IData {
 };
 
 export interface IUser {
-    user_id: number,
+    id?: number,
     first: string,
     last: string,
     email: string,
     password: string,
-    created_at: string,
-    updated_at: string
+    created_at?: string,
+    updated_at?: string
+};
+
+export interface ILogin {
+    email: string,
+    password: string,
+    token: string
 };
 
 
