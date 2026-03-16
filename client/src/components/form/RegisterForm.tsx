@@ -22,13 +22,10 @@ export const RegisterForm = () => {
         >
             <input placeholder="First Name" {...register("first")} />
             {errors.first && <p>{errors.first?.message}</p>}
-
             <input placeholder="Last Name" {...register("last")} />
             {errors.last && <p>{errors.last?.message}</p>}
-
             <input placeholder="Email" {...register("email")} />
             {errors.email && <p>{errors.email?.message}</p>}
-
             <input 
                 type="password" 
                 placeholder="Password" 

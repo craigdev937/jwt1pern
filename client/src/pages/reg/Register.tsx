@@ -5,6 +5,7 @@ import { RegisterForm } from "../../components/form/RegisterForm";
 import { UserCard } from "../../components/card/UserCard";
 
 export const Register = () => {
+
     return (
         <React.Fragment>
             <main>

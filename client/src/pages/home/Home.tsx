@@ -2,6 +2,7 @@ import React from "react";
 import "./Home.css";
 import { UserAPI } from "../../global/UserAPI";
 import { Spinner } from "../../components/spin/Spinner";
+import { RegisterForm } from "../../components/form/RegisterForm";
 import { UserCard } from "../../components/card/UserCard";
 
 export const Home = () => {
@@ -27,6 +28,7 @@ export const Home = () => {
                 <Spinner />
             ) : (
                 <main className="users__cont">
+                    <RegisterForm />
                     <section className="users__grid">
                         {US?.map((user) => (
                             <UserCard 

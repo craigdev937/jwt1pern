@@ -14,7 +14,11 @@ export const UserAPI = createApi({
                 url: "/user",
                 method: "GET"
             }),
-            providesTags: ["Users"]
+            providesTags: (result) => result ? [
+                ...result.data.map(({ id }) => 
+                    ({ type: "Users" as const, id })),
+                { type: "Users", id: "LIST" },
+            ] : [{ type: "Users", id: "LIST" }]
         }),
         one: builder.query<IUser, number>({
             query: (id) => ({
@@ -53,7 +57,7 @@ export const UserAPI = createApi({
                 method: "DELETE"
             }),
             invalidatesTags: ["Users"]
-        })
+        }),
     })
 });
 
