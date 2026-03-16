@@ -1,10 +1,10 @@
-import "./Login.css";
+import "./LoginUser.css";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LSchema, LType } from "../../validation/Schema";
 import { UserAPI } from "../../global/UserAPI";
 
-export const Login = () => {
+export const LoginUser = () => {
     const [loginUser, { isLoading }] = UserAPI.useLogMutation();
     const { register, handleSubmit, formState: { errors }
     } = useForm<LType>({

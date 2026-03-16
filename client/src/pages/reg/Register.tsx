@@ -1,5 +1,8 @@
 import React from "react";
 import "./Register.css";
+import { UserAPI } from "../../global/UserAPI";
+import { RegisterForm } from "../../components/form/RegisterForm";
+import { UserCard } from "../../components/card/UserCard";
 
 export const Register = () => {
     return (
