@@ -43,7 +43,7 @@ export const PRO: express.Handler = async (req: AU, res, next) => {
     if (token) {
         try {
             const decoded = jwt.verify(token, `${JWT}`) as DecodedToken;
-            const result = await dBase.query(
+            const result = await dBase.query<RType>(
                 "SELECT user_id, email, FROM users WHERE id = $1",
                 [decoded.user_id]
             );
