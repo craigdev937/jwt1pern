@@ -1,13 +1,13 @@
 import React from "react";
 import "./Login.css";
-import { LoginUser } from "../../components/login/LoginUser";
+import { LoginForm } from "../../components/login/LoginForm";
 
 export const Login = () => {
     return (
         <React.Fragment>
             <main>
                 <h1>Login Page</h1>
-                <LoginUser />
+                <LoginForm />
             </main>
         </React.Fragment>
     );
