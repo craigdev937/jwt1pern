@@ -26,13 +26,17 @@ export const LoginUser = () => {
             className="form"
             onSubmit={handleSubmit(onSubmit)}
         >
-            <h2>Login</h2>
-            <input placeholder="Email" {...register("email")} />
+            <input 
+                placeholder="Email" 
+                autoComplete="email"
+                {...register("email")} 
+            />
             {errors.email && <p>{errors.email?.message}</p>}
 
             <input 
                 type="password" 
                 placeholder="Password" 
+                autoComplete="current-password"
                 {...register("password")}
             />
             {errors.password && <p>{errors.password?.message}</p>}

@@ -20,15 +20,31 @@ export const RegisterForm = () => {
             className="form"
             onSubmit={handleSubmit(onSubmit)}
         >
-            <input placeholder="First Name" {...register("first")} />
+            <input 
+                placeholder="First Name" 
+                autoComplete="given-name"
+                {...register("first")} 
+            />
             {errors.first && <p>{errors.first?.message}</p>}
-            <input placeholder="Last Name" {...register("last")} />
+            
+            <input 
+                placeholder="Last Name" 
+                autoComplete="family-name"
+                {...register("last")} 
+            />
             {errors.last && <p>{errors.last?.message}</p>}
-            <input placeholder="Email" {...register("email")} />
+
+            <input 
+                placeholder="Email" 
+                autoComplete="email"
+                {...register("email")} 
+            />
             {errors.email && <p>{errors.email?.message}</p>}
+
             <input 
                 type="password" 
                 placeholder="Password" 
+                autoComplete="new-password"
                 {...register("password")} 
             />
             <button>Register User</button>
