@@ -25,4 +25,15 @@ export const LSchema = z.object({
 
 export type LType = z.infer<typeof LSchema>;
 
+export const PSchema = z.object({
+    user_id: z.number()
+        .min(1, { message: "User_ID is Required!" }),
+    name: z.string()
+        .min(3, { message: "Player Name is required!" }),
+    description: z.string(),
+    image: z.string()
+});
+
+export type PType = z.infer<typeof PSchema>;
+
 
