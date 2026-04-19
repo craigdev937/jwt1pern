@@ -1,8 +1,10 @@
 import express from "express";
 import bcrypt from "bcrypt";
-import { dBase } from "../db/Database";
-import { signToken } from "../middleware/Auth";
-import { RSchema, RType, LSchema, LType } from "../validation/Schema";
+import { dBase } from "../db/Database.ts";
+import { signToken } from "../middleware/Auth.ts";
+import { RSchema, LSchema } from "../validation/Schema.ts";
+import type { RType, LType } from "../validation/Schema.ts";
+import type { RUser } from "../validation/Schema.ts";
 
 class UserClass {
     Register: express.Handler = async (req, res, next) => {
@@ -19,7 +21,7 @@ class UserClass {
             (first, last, email, password) 
             VALUES ($1, $2, $3, $4) RETURNING *`;
             const values = [R.first, R.last, R.email, bPASS];
-            const newUser = await dBase.query(QRY, values);
+            const newUser = await dBase.query<RUser>(QRY, values);
             const jwtToken = signToken(newUser.rows[0].user_id);
             return res
                 .status(res.statusCode)
@@ -208,30 +210,30 @@ class UserClass {
         }
     };
 
-    // Profile: express.Handler = async (req, res, next) => {
-    //     try {
-    //         const { user_id } = req.params;
-    //         const QRY = `SELECT * FROM users WHERE user_id = $1`;
-    //         const user = await dBase.query<RType>(QRY, [user_id]);
-    //         return res
-    //             .status(res.statusCode)
-    //             .json({
-    //                 success: true,
-    //                 message: "User Profile",
-    //                 data: user.rows[0]
-    //             });
-    //     } catch (error) {
-    //         res
-    //             .status(res.statusCode)
-    //             .json({
-    //                 success: false,
-    //                 message: "Error User Profile!",
-    //                 error: error instanceof Error ?
-    //                     error.message : "Unknown Error!"
-    //             });
-    //         return next(error);
-    //     }
-    // };
+    Profile: express.Handler = async (req, res, next) => {
+        try {
+            const { user_id } = req.params;
+            const QRY = `SELECT * FROM users WHERE user_id = $1`;
+            const user = await dBase.query<RType>(QRY, [user_id]);
+            return res
+                .status(res.statusCode)
+                .json({
+                    success: true,
+                    message: "User Profile",
+                    data: user.rows[0]
+                });
+        } catch (error) {
+            res
+                .status(res.statusCode)
+                .json({
+                    success: false,
+                    message: "Error User Profile!",
+                    error: error instanceof Error ?
+                        error.message : "Unknown Error!"
+                });
+            return next(error);
+        }
+    };
 };
 
 export const USER: UserClass = new UserClass();

@@ -1,8 +1,7 @@
 import { Pool } from "pg";
-const connectionString = process.env.DATABASE_URL;
+const CONNECTION = process.env.DATABASE_URL;
 
 export const dBase: Pool = new Pool({
-    connectionString: `${connectionString}`
+    connectionString: CONNECTION
 });
-
 

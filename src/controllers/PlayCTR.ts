@@ -1,6 +1,7 @@
 import express from "express";
-import { dBase } from "../db/Database";
-import { PSchema, PType } from "../validation/Schema";
+import { dBase } from "../db/Database.ts";
+import { PSchema } from "../validation/Schema.ts";
+import type { PType, RType } from "../validation/Schema.ts";
 
 class PlayerClass {
     Create: express.Handler = async (req, res, next) => {

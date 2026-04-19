@@ -1,7 +1,7 @@
 import express from "express";
 import jwt from "jsonwebtoken";
-import { dBase } from "../db/Database";
-import { RType } from "../validation/Schema";
+import { dBase } from "../db/Database.ts";
+import type { RType } from "../validation/Schema.ts";
 const JWT = process.env.JWT_SECRET ?? "";
 
 export const signToken = (user_id: string) => jwt.sign({ user_id }, 

@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
-  "type": "commonjs",
+  "type": "module",
   "engines": {
     "node": "24.x",
     "npm": "11.x"
   },
   "scripts": {
-    "dev": "nodemon --exec ts-node src/index.ts",
+    "dev": "nodemon",
     "pro": "tsc && node dist/index.js",
     "start": "node dist/index.js",
     "migrate": "node-pg-migrate"

@@ -1,6 +1,6 @@
 import express from "express";
-import { USER } from "../controllers/UserCTR";
-import { AUTH } from "../middleware/Auth";
+import { USER } from "../controllers/UserCTR.ts";
+import { AUTH } from "../middleware/Auth.ts";
 
 // ROUTE:   localhost:9000/api/user
 export const userRt: express.Router = express.Router();

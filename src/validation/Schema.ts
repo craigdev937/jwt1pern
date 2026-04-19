@@ -15,6 +15,9 @@ export const RSchema = z.object({
 });
 
 export type RType = z.infer<typeof RSchema>;
+export interface RUser extends RType {
+    user_id: string
+}
 
 export const LSchema = z.object({
     email: z.email({ pattern: z.regexes.html5Email })
